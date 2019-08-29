@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'package:flutter/material.dart';
 
 //void main() => runApp(new MyApp());
-void main() => runApp(new MyNewApp());
+//void main() => runApp(new MyNewApp());
+void main() => runApp(new FlutterApp());
 
 class MyApp extends StatelessWidget {
   @override
@@ -69,6 +70,7 @@ class RandomWordsState extends State<RandomWords> {
   }
 }
 
+
 //实现标题行
 class MyNewApp extends StatelessWidget {
   @override
@@ -79,23 +81,23 @@ class MyNewApp extends StatelessWidget {
         children: <Widget>[
           new Expanded(
               child: new Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              new Container(
-                padding: const EdgeInsets.only(bottom: 8.0),
-                child: new Text(
-                  "Oeschinen Lake Campground",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ),
-              new Text(
-                'Kandersteg, Switzerland',
-                style: new TextStyle(
-                  color: Colors.grey[500],
-                ),
-              ),
-            ],
-          )),
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  new Container(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: new Text(
+                      "Oeschinen Lake Campground",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  new Text(
+                    'Kandersteg, Switzerland',
+                    style: new TextStyle(
+                      color: Colors.grey[500],
+                    ),
+                  ),
+                ],
+              )),
           new Icon(
             Icons.star,
             color: Colors.red[500],
@@ -105,7 +107,9 @@ class MyNewApp extends StatelessWidget {
       ),
     );
     Column buildButtonColumn(IconData icon, String label) {
-      Color color = Theme.of(context).primaryColor;
+      Color color = Theme
+          .of(context)
+          .primaryColor;
       return new Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -146,6 +150,7 @@ Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese Alps. Situate
       ),
     );
 
+
     return new MaterialApp(
       title: "Flutter Demo",
       theme: new ThemeData(
@@ -172,3 +177,21 @@ Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese Alps. Situate
     );
   }
 }
+
+class FlutterApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+        title: "Flutter Demo",
+        theme: new ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: new Scaffold(appBar: new AppBar(key: new Key("hello world"),
+          title: new Text("测试", style: new TextStyle(fontSize: 20),),),
+            body: new Center(child: new Text("hello world",
+                style: new TextStyle(fontSize: 32, color: Colors.red[500]))))
+    );
+  }
+}
+
+
