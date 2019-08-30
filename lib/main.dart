@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 
 //void main() => runApp(new MyApp());
 //void main() => runApp(new MyNewApp());
-void main() => runApp(new FlutterApp());
+//void main() => runApp(new FlutterApp());
+//void main() => runApp(new FlutterAppOne());
+void main() => runApp(new FlutterAppTwo());
 
 class MyApp extends StatelessWidget {
   @override
@@ -194,4 +196,67 @@ class FlutterApp extends StatelessWidget {
   }
 }
 
+class FlutterAppOne extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Container(decoration: BoxDecoration(color: Colors.red[500]),
+        child: new Center(
+            child: new Text("hello world", textDirection: TextDirection.ltr,
+                style: new TextStyle(fontSize: 20, color: Colors.yellow)))
+    );
+  }
+}
 
+
+//图片均分
+class FlutterAppTwo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+      title: "测试均分布局",
+      home: new MyFlutterApp(),
+    );
+  }
+}
+
+
+class MyFlutterApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return new MyState();
+  }
+}
+
+class MyState extends State<MyFlutterApp> {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text(
+            "图片对齐", style: new TextStyle(fontSize: 16, color: Colors.yellow)),
+      ),
+      body: new Center(child: new Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          SizedBox(
+              width: 100, height: 100, child: new Padding(
+            //EdgeInsetsGeometry是个抽象类  找到他的实现子类进行操作
+              padding: EdgeInsetsDirectional.only(start: 10, end: 10),
+              child: Image.asset('images/lake.jpg'))),
+          SizedBox(
+              width: 100,
+              height: 100,
+              child: new Padding(
+                  padding: EdgeInsetsDirectional.only(start: 10, end: 10),
+                  child: Image.asset('images/lake.jpg'))),
+          SizedBox(
+              width: 100,
+              height: 100,
+              child: new Padding(
+                  padding: EdgeInsetsDirectional.only(start: 10, end: 10),
+                  child: Image.asset('images/lake.jpg')))
+        ],),),
+    );
+  }
+
+}
