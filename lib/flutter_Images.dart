@@ -24,7 +24,9 @@ import 'package:flutter/material.dart';
 //void main() => runApp(new FlutterApp());
 //void main() => runApp(new _MyHomePageState());
 //void main() => runApp(new _MyHomePageStateOne());
-void main() => runApp(new _MyHomePageStateTwo());
+//void main() => runApp(new _MyHomePageStateTwo());
+//void main() => runApp(new _MyHomePageStateThree());
+void main() => runApp(new _MyHomePageStateFour());
 
 /// 对图片进行比例的显示 有点像Android中的xml布局的widget
 class FlutterApp extends StatelessWidget {
@@ -250,4 +252,98 @@ class _MyHomePageStateTwo extends StatelessWidget {
     return new MaterialApp(home: PageInfoTwo(),);
   }
 
+}
+
+///////////////////////////////////////////////////////////////////////
+//Stack重叠的布局
+
+class PageThree extends State<PageInfoThree> {
+  @override
+  Widget build(BuildContext context) {
+    var stack = new Stack(
+      alignment: const Alignment(0.6, 0.6),
+      children: <Widget>[
+        new CircleAvatar(backgroundImage: new AssetImage('images/lake.jpg'),
+          radius: 100,
+
+        ),
+        new Container(
+          decoration: new BoxDecoration(color: Colors.red[500]),
+          child: new Text("我是覆盖者", style: new TextStyle(
+              color: Colors.green, fontSize: 20, fontWeight: FontWeight.bold),)
+          ,)
+      ],
+    );
+    return stack;
+  }
+}
+
+
+class PageInfoThree extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return new PageThree();
+  }
+}
+
+class _MyHomePageStateThree extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(home: PageInfoThree(),);
+  }
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+//Card阴影的使用
+class PageFour extends State<PageInfoFour> {
+  @override
+  Widget build(BuildContext context) {
+    var card = new SizedBox(height: 240, child: new Card(
+      elevation: 20,
+
+      child: new Column(
+        children: <Widget>[
+          new ListTile(title: new Text('1625 Main Street',
+              style: new TextStyle(fontWeight: FontWeight.w500)),
+            subtitle: new Text('My City, CA 99984'),
+            leading: new Icon(Icons.restaurant_menu,
+                color: Colors.blue[500]),
+          ),
+          new Divider(color: Colors.green),
+          new ListTile(title: new Text('1625 Main Street',
+              style: new TextStyle(fontWeight: FontWeight.w500)),
+            subtitle: new Text('My City, CA 99984'),
+            leading: new Icon(Icons.restaurant_menu,
+                color: Colors.red[400]),
+          ),
+          new ListTile(title: new Text('1625 Main Street',
+              style: new TextStyle(fontWeight: FontWeight.w500)),
+            subtitle: new Text('My City, CA 99984'),
+            leading: new Icon(Icons.restaurant_menu,
+                color: Colors.green[500]),
+          ),
+        ],
+      ),
+    ),);
+    var scafflod = new Scaffold(appBar: new AppBar(title: new Text("card测试",
+      style: new TextStyle(fontSize: 16, color: Colors.greenAccent),),)
+      , body: card,);
+    return scafflod;
+  }
+}
+
+
+class PageInfoFour extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return new PageFour();
+  }
+}
+
+class _MyHomePageStateFour extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(home: PageInfoFour(),);
+  }
 }
