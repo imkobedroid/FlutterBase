@@ -43,6 +43,9 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
 
   @override
   Widget build(BuildContext context) {
+    //注意 这里返回的组件必须用Scaffold包裹一下，不能直接返回row 不然会报找不到组件错误
+    // 因为row不是继承于StatelessWidget组件！这里必须要返回一个StatelessWidget组件
+    //原因在于最外层的MyApp是继承于StatelessWidget组件的 所以从最内层必须返回一个这个组件进行构建
     return new Scaffold(appBar: new AppBar(title: new Text("测试"),), body:
     new Row(
       mainAxisSize: MainAxisSize.min,
