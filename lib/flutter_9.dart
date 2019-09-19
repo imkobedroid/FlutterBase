@@ -13,7 +13,6 @@ class FadeAppTest extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(title: "fade demo",
         theme: new ThemeData(primarySwatch: Colors.blue,
-
         ), home: new MyFadeTest(title: "fade demo"));
   }
 }
