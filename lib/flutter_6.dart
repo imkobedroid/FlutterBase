@@ -24,7 +24,8 @@ class FavoriteWidget extends StatefulWidget {
   }
 }
 
-class _FavoriteWidgetState extends State<FavoriteWidget> {
+
+class _FavoriteWidgetState extends State {
 
   bool _isFavorited = true;
   int _favoriteCount = 41;
@@ -43,6 +44,7 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
 
   @override
   Widget build(BuildContext context) {
+    //因为这里使用到的是IconButton 是一个material组件，所以外层必须使用material组件进行包裹，这里material组件有Card, Dialog, Drawer Scaffold
     return new Scaffold(appBar: new AppBar(title: new Text("测试"),), body:
     new Row(
       mainAxisSize: MainAxisSize.min,
@@ -64,7 +66,8 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
           ),
         )
       ],
-    ),);
+    ),
+    );
   }
 
 }
